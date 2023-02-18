@@ -29,16 +29,22 @@ let persons = [
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
-  })
+})
   
-  app.get('/api/persons', (req, res) => {
+app.get('/api/persons', (req, res) => {
+    
     res.json(persons)
-  })
+})
+
+app.get('/api/persons/info', (req, res) => {
+    const date = new Date().toUTCString();
+    console.log('date: ',date);
+    res.send(`<h1>Phonebook has info for ${persons.length} people</h1><br><h2>${date}<h2>`)
+    
+})
 
 
 
-
-  
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
